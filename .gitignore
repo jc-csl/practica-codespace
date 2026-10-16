@@ -1,0 +1,56 @@
+# =====================================================================
+#  .gitignore · Terraform + AWS (Learner Lab) · Codespaces / WSL
+#  Lo que NUNCA debe subirse a GitHub
+# =====================================================================
+
+# --- Claves y credenciales ---------------------------------------------
+# Clave privada SSH del Learner Lab (labsuser.pem) y cualquier otra
+*.pem
+*.key
+*.ppk
+# Credenciales de AWS si alguien las copia dentro del proyecto
+.aws/
+credentials
+*.env
+.env*
+
+# --- Terraform ---------------------------------------------------------
+# Carpeta de plugins: se vuelve a crear con "terraform init"
+**/.terraform/*
+# Estado: guarda IDs e IPs de tu infraestructura (puede tener datos sensibles)
+*.tfstate
+*.tfstate.*
+.terraform.tfstate.lock.info
+# Planes guardados con "terraform plan -out"
+*.tfplan
+# Valores de variables privados
+*.tfvars
+*.tfvars.json
+# Ficheros de override y configuración local de la CLI
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+# Registros de errores
+crash.log
+crash.*.log
+
+# OJO: .terraform.lock.hcl SÍ se sube (fija las versiones del provider)
+
+# --- Sistema y editor --------------------------------------------------
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.vscode/*
+!.vscode/extensions.json
+
+# =====================================================================
+#  En Codespaces:
+#  · "Rebuild container" conserva /workspaces (tus .tf y el tfstate),
+#    pero BORRA ~/.aws y ~/.ssh: vuelve a pegar credenciales y labsuser.pem.
+#  · "Delete codespace" lo borra TODO, también el tfstate:
+#    haz "terraform destroy" ANTES de borrarlo.
+# =====================================================================
