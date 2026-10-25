@@ -1,6 +1,6 @@
 # El grupo: un cortafuegos vacío
 resource "aws_security_group" "web" {
-  name        = "sg-ubuntu-asir"
+  name        = "ubuntu-asir"
   description = "SSH, HTTP y HTTPS"
 }
 
